@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Score Predictor</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            margin-top: 50px; 
+            background-color: darkblue; 
+            color: white; 
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+        .form-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            color: black;
+            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+            width: 300px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        select, input {
+            margin: 5px 0;
+            padding: 8px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: darkgreen;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-box">
+            <h2>IPL Score Predictor</h2>
+            <form method="POST">
+                <label>Batting Team:</label>
+                <select name="batting_team">
+                    <option>Chennai Super Kings</option>
+                    <option>Delhi Daredevils</option>
+                    <option>Kings XI Punjab</option>
+                    <option>Kolkata Knight Riders</option>
+                    <option>Mumbai Indians</option>
+                    <option>Rajasthan Royals</option>
+                    <option>Royal Challengers Bangalore</option>
+                    <option>Sunrisers Hyderabad</option>
+                </select>
+
+                <label>Bowling Team:</label>
+                <select name="bowling_team">
+                    <option>Chennai Super Kings</option>
+                    <option>Delhi Daredevils</option>
+                    <option>Kings XI Punjab</option>
+                    <option>Kolkata Knight Riders</option>
+                    <option>Mumbai Indians</option>
+                    <option>Rajasthan Royals</option>
+                    <option>Royal Challengers Bangalore</option>
+                    <option>Sunrisers Hyderabad</option>
+                </select>
+
+                <label>Overs Completed:</label>
+                <input type="number" name="overs" step="0.1" required>
+
+                <label>Runs Scored:</label>
+                <input type="number" name="runs" required>
+
+                <label>Wickets Lost:</label>
+                <input type="number" name="wickets" required>
+
+                <label>Runs in Last 5 Overs:</label>
+                <input type="number" name="runs_last_5" required> <!-- Fixed name -->
+
+                <label>Wickets in Last 5 Overs:</label>
+                <input type="number" name="wickets_last_5" required> <!-- Fixed name -->
+
+                <button type="submit">Predict Score</button>
+            </form>
+
+            {% if result %}
+                <div class="result">
+                    <h3>Predicted Final Score: {{ result-10 }} to {{ result+5 }}</h3>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
